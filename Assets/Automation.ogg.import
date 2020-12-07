@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Automation.ogg-b0ffe1e15184ab23c464dc50b6b5d820.oggstr"
+
+[deps]
+
+source_file="res://Assets/Automation.ogg"
+dest_files=[ "res://.import/Automation.ogg-b0ffe1e15184ab23c464dc50b6b5d820.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

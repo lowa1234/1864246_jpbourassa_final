@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Balle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Art Pack/Player_Attack.png" type="Texture" id=3]
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( -0.750847, 0.917704 )
+scale = Vector2( 0.75, 0.75 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+balle = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.210228 )
+rotation = 1.5708
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -5.16008, 0 )
+rotation = 1.5708
+scale = Vector2( 0.75, 0.75 )
+polygon = PoolVector2Array( -10.1768, -33.8555, -27.1411, -33.2651, -27.141, -3.15888, -47.1499, 17.7187, -47.1499, 27.518, -9.6695, 26.8509, 0.92515, 32.7368, 11.0489, 26.1445, 47.5415, 25.6735, 47.2041, 17.1583, 27.4566, -2.9623, 27.0665, -33.6588, 10.4922, -34.0523, 10.4922, -40.5458, 0.157663, -48.2199, -10.3718, -39.3651 )
+
+[node name="Canon" type="Position2D" parent="."]
+position = Vector2( 38, 0 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 0.75, 0.75 )
+current = true
