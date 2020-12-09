@@ -1,12 +1,19 @@
 extends KinematicBody2D
 
+signal health_update(health)
+signal killed()
+
 var vitesse = 200
 var vitesseLat = 100
 var velocite = Vector2()
+
 export (PackedScene) var balle
+export (float) var max_health = 100
+
 onready var canon = $Canon
 onready var ui = get_tree().current_scene.get_node("UI")
-
+onready var health = max_health setget _set_health
+onready var invulnerability = $Invulnerability
 
 func _ready():
 	pass # Replace with function body.
@@ -18,9 +25,6 @@ func _physics_process(delta):
 	if dir.length() > 5:
 		rotation = dir.angle()
 		velocite = move_and_slide(velocite)
-	if collisions:
-		ui.reduire_vie()
-
 
 func get_input():
 	var avance = Input.is_action_pressed("ui_up")
@@ -41,5 +45,26 @@ func get_input():
 		var b = balle.instance()
 		b.creer(canon.global_position, rotation)
 		get_parent().add_child(b)
+		$Shoot.play()
 
 
+func damage(amount):
+	if invulnerability.is_stopped():
+		invulnerability.start()
+		_set_health(health - amount)
+		$AnimatedSprite.play("invulnerabilty")
+
+func kill():
+	pass
+
+func _set_health(value):
+	var prev_health = health
+	health = clamp(value, 0, max_health)
+	if health != prev_health:
+		emit_signal("health_update", health)
+		if health == 0:
+			kill()
+			emit_signal("killed")
+
+func _on_Invulnerability_timeout():
+	$AnimatedSprite.play("default")
