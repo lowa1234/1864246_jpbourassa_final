@@ -68,3 +68,7 @@ func _set_health(value):
 
 func _on_Invulnerability_timeout():
 	$AnimatedSprite.play("default")
+
+
+func _on_Area2D_body_entered(body):
+	pass # Replace with function body.

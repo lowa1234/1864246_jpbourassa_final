@@ -4,7 +4,6 @@ var vitesse = 1000
 var velocite = Vector2()
 
 
-
 func creer(pos,dir):
 	position = pos
 	velocite = Vector2(vitesse,0).rotated(dir)

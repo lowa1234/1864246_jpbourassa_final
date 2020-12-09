@@ -61,4 +61,13 @@ one_shot = true
 
 [node name="Shoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( -5.16008, 0 )
+rotation = 1.5708
+scale = Vector2( 0.75, 0.75 )
+polygon = PoolVector2Array( -10.1768, -33.8555, -27.1411, -33.2651, -27.141, -3.15888, -47.1499, 17.7187, -47.1499, 27.518, -9.6695, 26.8509, 0.92515, 32.7368, 11.0489, 26.1445, 47.5415, 25.6735, 47.2041, 17.1583, 27.4566, -2.9623, 27.0665, -33.6588, 10.4922, -34.0523, 10.4922, -40.5458, 0.157663, -48.2199, -10.3718, -39.3651 )
 [connection signal="timeout" from="Invulnerability" to="." method="_on_Invulnerability_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
