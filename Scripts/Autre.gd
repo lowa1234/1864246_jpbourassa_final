@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
 export var hp = 2
+export (PackedScene) var enemy_bullet
 
 onready var player = get_tree().current_scene.find_node("Player")
+onready var canon = $Canon
+onready var tire = $Tire
 
 const MOVE_SPEED = 200
 
@@ -24,3 +27,16 @@ func _on_Area2D_body_entered(body):
 		hp -= 1
 	if hp == 0:
 		queue_free()
+
+
+func _on_Tire_timeout():
+	var b1 = enemy_bullet.instance()
+	var b2 = enemy_bullet.instance()
+	var b3 = enemy_bullet.instance()
+	b1.creer(canon.global_position, rotation_degrees)
+	get_parent().add_child(b1)
+	b2.creer(canon.global_position, rotation_degrees + 10)
+	get_parent().add_child(b2)
+	b3.creer(canon.global_position, rotation_degrees - 10)
+	get_parent().add_child(b3)
+	tire.start()

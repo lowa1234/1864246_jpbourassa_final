@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var hp = 3
 
 onready var player = get_tree().current_scene.find_node("Player")
+onready var canon = $Canon
 
 const MOVE_SPEED = 100
 

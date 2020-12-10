@@ -6,6 +6,7 @@ var gros = preload("res://scenes/Gros.tscn")
 var autre = preload("res://scenes/Autre.tscn")
 
 export var saferadius = 200
+export var nb_ennemis = 5
 
 onready var player = get_tree().current_scene.find_node("Player")
 
@@ -18,7 +19,7 @@ func _ready():
 func _process(delta):
 	if get_child_count() == 0:
 		var avoid = player.position
-		for i in range(5):
+		for i in range(nb_ennemis):
 			var child
 			match randi() %3:
 				0: child = petit.instance()
