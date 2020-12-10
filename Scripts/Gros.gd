@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 export var hp = 3
+export (PackedScene) var missile
 
 onready var player = get_tree().current_scene.find_node("Player")
 onready var canon = $Canon
+onready var tire = $Tire
 
 const MOVE_SPEED = 100
 
@@ -24,3 +26,10 @@ func _on_Area2D_body_entered(body):
 		hp -= 1
 	if hp == 0:
 		queue_free()
+
+
+func _on_Tire_timeout():
+	var m = missile.instance()
+	m.creer(canon.global_position, rotation)
+	get_parent().add_child(m)
+	tire.start()

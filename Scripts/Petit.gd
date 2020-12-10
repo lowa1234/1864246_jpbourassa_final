@@ -22,7 +22,6 @@ func _on_VisibilityNotifier2D_viewport_entered(viewport):
 	pass # Replace with function body.
 
 func _on_Area2D_body_entered(body):
-	print(body.name)
 	if "Balle" in body.name:
 		hp -= 1
 	if hp == 0:

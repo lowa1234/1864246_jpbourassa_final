@@ -7,7 +7,7 @@ onready var player = get_tree().current_scene.find_node("Player")
 onready var canon = $Canon
 onready var tire = $Tire
 
-const MOVE_SPEED = 200
+const MOVE_SPEED = 150
 
 func _ready():
 	pass # Replace with function body.

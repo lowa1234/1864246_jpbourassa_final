@@ -65,10 +65,14 @@ func _set_health(value):
 		if health == 0:
 			kill()
 			emit_signal("killed")
+			get_tree().reload_current_scene()
 
 func _on_Invulnerability_timeout():
 	$AnimatedSprite.play("default")
 
 
 func _on_Area2D_body_entered(body):
-	pass # Replace with function body.
+	if "EnemyBullet" in body.name:
+		damage(5)
+	if "Missile" in body.name:
+		damage(10)
